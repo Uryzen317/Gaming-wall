@@ -1,0 +1,106 @@
+<div class="body-container flex justify-center">
+  <div class="main-container bg-white my-4 container shadow-2xl">
+    <!-- header -->
+    <section class="first-section relative h-screen overflow-hidden">
+      <div
+        style="background-image:url('./../../assets/index/main-page.jpg')"
+        class="w-full h-full bg-cover bg-no-repeat bg-fixed bg-top"
+      ></div>
+      <div class="search-box absolute flex w-full justify-center top-3/4">
+        <div class="search-box-trace relative w-[300px] sm:w-[500px]">
+          <!-- search results -->
+          <div
+            class="res-container w-72 absolute bottom-0 left-[50%] translate-x-[-50%] flex flex-row flex-wrap items-end content-end overflow-hidden"
+            style="height: calc(calc(100vh - 25%) - 190px);"
+          >
+            <a
+              [routerLink]="['games', search.name]"
+              class="flex justify-between w-full h-20 bg-white border-y border-slate-500 gap-2 overflow-hidden"
+              *ngFor="let search of searchRes"
+            >
+              <div class="ml-2 my-2">
+                <p class="text-md">{{ search.name }}</p>
+                <div class="flex gap-2">
+                  <p>والپیپر</p>
+                  <p>{{ search.count }}</p>
+                </div>
+              </div>
+              <img
+                [src]="environment.cdnServer + search.avatar"
+                alt="والپیپر"
+              />
+            </a>
+          </div>
+
+          <input
+            type="text"
+            class="outline-none pr-5 pl-14 rounded-full w-[300px] sm:w-[400px] h-12 text-xl text-right placeholder:text-black opacity-90 focus:w-screen sm:focus:w-[500px] 
+            transition-all ease-out focus:opacity-100 absolute left-[50%] translate-x-[-50%] z-10 peer"
+            placeholder="دنبال چه والپیپری هستی ؟"
+            [formControl]="searchBox"
+          />
+          <img
+            src="./../../assets/index/search.svg"
+            class="absolute h-8 peer-focus:hidden sm:peer-focus:left-2 left-4 sm:left-16 top-2 animate-pulse cursor-pointer z-10 transition-all ease-out"
+          />
+          <div
+            class="bg-white h-10 w-[170px] sm:w-[220px] sm:peer-focus:w-[280px] absolute top-1 left-[65px] sm:left-[138px] sm:peer-focus:left-28 rounded-full animate-ping 
+            z-0 peer-focus:w-screen peer-focus:-left-[35px]"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- intro -->
+    <section class="intro-section">
+      <div class="intro-container p-10">
+        <h1 class="text-right text-semibold text-6xl text-zinc-700 mt-10">
+          گیمینگ وال ، والپیپر گیمینگ دستگاه شما
+        </h1>
+        <p class="text-right text-lg mt-10 text-zinc-600">
+          مرجع دانلود با کیفیت ترین و بزور ترین والپیپر های گیمینگ اختصاصی و یا
+          از سراسر اینترنت
+        </p>
+        <div
+          class="details-container flex sm:flex-row flex-col items-center gap-12 justify-between mt-20"
+        >
+          <div
+            class="wallpapers-count sm:w-48 sm:h-fit h-72 aspect-square  border border-zinc-200 shadow-md hover:shadow-lg hover:-translate-y-2 cursor-pointer transition-transform duration-50 ease-in
+             flex flex-col justify-center"
+          >
+            <p class="text-center text-semibold text-6xl p-6 text-zinc-600">
+              100
+            </p>
+            <p class="text-center p-4 text-lg text-zinc-600">والپیپر گیمینگ</p>
+          </div>
+          <div
+            class="wallpapers-count rounded-sm sm:w-48 sm:h-fit h-72 aspect-square  wallpapers-count  border border-zinc-200 shadow-md hover:shadow-lg
+             hover:-translate-y-2 cursor-pointer transition-transform duration-50 ease-in flex flex-col justify-center"
+          >
+            <p class="text-center text-semibold text-6xl p-6 text-zinc-600">
+              100
+            </p>
+            <p class="text-center p-4 text-lg text-zinc-600">مجموع دانلود ها</p>
+          </div>
+          <div
+            class="wallpapers-count sm:w-48 sm:h-fit h-72 aspect-square  border border-zinc-200 shadow-md hover:shadow-lg hover:-translate-y-2 cursor-pointer transition-transform duration-50 ease-in
+            rounded-sm flex flex-col justify-center"
+          >
+            <p class="text-center text-semibold text-6xl p-6 text-zinc-600">
+              100
+            </p>
+            <p class="text-center p-4 text-lg text-zinc-600">عنوان گیم</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- games -->
+    <section
+      class="game-section overflow-hidden h-screen"
+      *ngFor="let game of games"
+    >
+      <app-game-section [game]="game"></app-game-section>
+    </section>
+  </div>
+</div>

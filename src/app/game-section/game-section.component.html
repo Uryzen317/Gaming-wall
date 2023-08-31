@@ -1,0 +1,163 @@
+<div
+  class="game-section-container w-full h-full bg-cover bg-center"
+  [style.backgroundImage]="
+    'url(' + environment.cdnServer + game.game.avatar + ')'
+  "
+>
+  <div
+    class="inner-game-container md:pr-10 py-10 flex flex-col h-full justify-between"
+  >
+    <!-- headers -->
+    <p
+      class="text-right text-xl pr-8 border-r-4 mr-8 md:mr-0"
+      [style.borderColor]="game.primaryColor"
+      [style.color]="game.secondaryColor"
+    >
+      برترین های
+    </p>
+    <p
+      class="text-6xl md:text-8xl border-l-4 w-fit drop-shadow-2xl font-normal px-2 sm:px-10 pt-4"
+      [style.borderColor]="game.primaryColor"
+      [style.color]="game.primaryColor"
+      [style.boxShadow]="'-4px 4px 6px -1px' + game.primaryColor"
+      [style.backgroundImage]="
+        'linear-gradient(to right,' + game.secondaryColor + ', transparent)'
+      "
+    >
+      {{ game.game.name | uppercase }}
+    </p>
+
+    <!-- images -->
+    <div class="image-slideshow flex justify-center items-center">
+      <div
+        class="slideshow-container w-[300px] h-[200px] md:w-[500px] md:h-[300px] relative"
+      >
+        <a
+          [routerLink]="[
+            '/',
+            'wallpaperById',
+            game.game.name,
+            game.items[0].index
+          ]"
+          ><img
+            class="absolute w-[300px] h-[200px] md:w-[500px] md:h-[300px] transition-all duration-200 select-none"
+            [style.boxShadow]="'0 4px 6px -1px' + game.primaryColor"
+            [src]="environment.cdnServer + game.items[0].avatar"
+            [class]="styles[0]"
+            loading="lazy"
+          />
+        </a>
+        <a
+          [routerLink]="[
+            '/',
+            'wallpaperById',
+            game.game.name,
+            game.items[1].index
+          ]"
+          ><img
+            class="absolute w-[300px] h-[200px] md:w-[500px] md:h-[300px] transition-all duration-200 select-none"
+            [style.boxShadow]="'0 4px 6px -1px' + game.primaryColor"
+            [src]="environment.cdnServer + game.items[1].avatar"
+            [class]="styles[1]"
+            loading="lazy"
+        /></a>
+        <a
+          [routerLink]="[
+            '/',
+            'wallpaperById',
+            game.game.name,
+            game.items[2].index
+          ]"
+          ><img
+            class="absolute w-[300px] h-[200px] md:w-[500px] md:h-[300px] transition-all duration-200 select-none"
+            [style.boxShadow]="'0 4px 6px -1px' + game.primaryColor"
+            [src]="environment.cdnServer + game.items[2].avatar"
+            [class]="styles[2]"
+            loading="lazy"
+        /></a>
+        <a
+          [routerLink]="[
+            '/',
+            'wallpaperById',
+            game.game.name,
+            game.items[3].index
+          ]"
+          ><img
+            class="absolute w-[300px] h-[200px] md:w-[500px] md:h-[300px] transition-all duration-200 select-none"
+            [style.boxShadow]="'0 4px 6px -1px' + game.primaryColor"
+            [src]="environment.cdnServer + game.items[3].avatar"
+            [class]="styles[3]"
+            loading="lazy"
+        /></a>
+        <a
+          [routerLink]="[
+            '/',
+            'wallpaperById',
+            game.game.name,
+            game.items[4].index
+          ]"
+        >
+          <img
+            class="absolute w-[300px] h-[200px] md:w-[500px] md:h-[300px] transition-all duration-200 select-none"
+            [style.boxShadow]="'0 4px 6px -1px' + game.primaryColor"
+            [src]="environment.cdnServer + game.items[4].avatar"
+            [class]="styles[4]"
+            loading="lazy"
+        /></a>
+
+        <!-- nav buttons -->
+        <div
+          class="invisible-wall absolute top-0 md:-right-32 z-20 -right-12 bg-white h-full w-12 opacity-0 md:hidden"
+        ></div>
+        <div
+          class="invisible-wall absolute md:-left-28 -left-10 top-0 z-20 bg-white h-full w-14 opacity-0 md:hidden"
+        ></div>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="48"
+          width="48"
+          class="absolute top-[40%] md:-right-32 cursor-pointer animate-pulse z-20 -right-12"
+          [style.fill]="game.primaryColor"
+          src="../../assets/game-section/next.svg"
+          alt=""
+          (click)="next()"
+        >
+          <path d="m15.2 43.9-2.8-2.85L29.55 23.9 12.4 6.75l2.8-2.85 20 20Z" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="48"
+          width="48"
+          class="absolute top-[40%] md:-left-28 cursor-pointer animate-pulse z-20 -left-8"
+          [style.fill]="game.primaryColor"
+          src="../../assets/game-section/previous.svg"
+          alt=""
+          (click)="back()"
+        >
+          <path d="M20 44 0 24 20 4l2.8 2.85L5.65 24 22.8 41.15Z" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- see more -->
+    <a [routerLink]="['games', game.game.name]"
+      ><div
+        class="see-more-container flex justify-left items-center cursor-pointer ml-8"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="40"
+          width="40"
+          class="animate-pulse"
+          [style.fill]="game.primaryColor"
+        >
+          <path d="M28.05 36 16 23.95 28.05 11.9l2.15 2.15-9.9 9.9 9.9 9.9Z" />
+        </svg>
+        <p class="text-xl mt-2" [style.color]="game.secondaryColor">
+          بیشتر ببینید
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
